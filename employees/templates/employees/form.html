@@ -1,0 +1,38 @@
+{% extends 'employees/base.html' %}
+{% load form_filters %}
+
+{% block title %}Add / Edit Member{% endblock %}
+
+{% block content %}
+<div class="bg-white p-5 shadow-sm rounded">
+    <h2 class="mb-4">Employee Form</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="id_first_name" class="form-label">First Name</label>
+                {{ form.first_name|add_class:"form-control" }}
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="id_last_name" class="form-label">Last Name</label>
+                {{ form.last_name|add_class:"form-control" }}
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="id_email" class="form-label">Email</label>
+                {{ form.email|add_class:"form-control" }}
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="id_phone" class="form-label">Phone</label>
+                {{ form.phone|add_class:"form-control" }}
+            </div>
+            <div class="mb-3 col-md-12">
+                <label for="id_position" class="form-label">Position</label>
+                {{ form.position|add_class:"form-control" }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'employee_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
